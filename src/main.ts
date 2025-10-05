@@ -46,9 +46,14 @@ class App {
           model.position.x -= center.x
           model.position.y -= center.y
           model.position.z -= center.z
-          
-          this.camera.position.set(0, size.y * 0.3, 0)
-          
+
+          // infos => (position: THREE.Vector3, rotation: THREE.Euler, scale: THREE.Vector3)
+          this.camera.position.set(1, size.y - 130 , 66)
+
+          // infos => (position: THREE.Vector3, rotation: THREE.Euler, scale: THREE.Vector3)
+          this.camera.rotation.set(0, Math.PI, 0)
+          this.camera.scale.set(1, 1, 1)
+
           model.traverse((child) => {
             if ((child as THREE.Mesh).isMesh) {
               child.castShadow = true
@@ -70,10 +75,10 @@ class App {
 
   private initCamera(): void {
     this.camera = new THREE.PerspectiveCamera(
-      75,
+      80,
       window.innerWidth / window.innerHeight,
-      0.1,
-      1000
+      0.3,
+      1100
     )
     this.camera.position.set(0, 1.6, 0)
   }
